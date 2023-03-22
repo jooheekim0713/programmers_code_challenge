@@ -1,2 +1,2 @@
-# Programmers_code_challenge
+# programmers_code_challenge
 This is a auto push repository for Baekjoon Online Judge created with [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub).
