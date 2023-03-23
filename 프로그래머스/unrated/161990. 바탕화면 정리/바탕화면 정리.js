@@ -1,17 +1,16 @@
 function solution(wallpaper) {
-  const X = [];
-  const Y = [];
-
-  for (let i = 0; i < wallpaper.length; i++) {
-    for (let j = 0; j < wallpaper[i].length; j++) {
-      if (wallpaper[i][j] === "#") {
-          Y.push(i);
-          X.push(j);
+        let [x1, y1, x2, y2] = [wallpaper.length, wallpaper[0].length, 0, 0];
+        // x1 => min i
+        // x2 => max i
+        // y1 => min idx
+        // y2 => max idx
+        wallpaper.forEach((paper, i) => {
+          if (paper.includes('#')) {
+            x1 = Math.min(x1, i);
+            y1 = Math.min(y1, paper.indexOf('#'));
+            x2 = Math.max(x2, i);
+            y2 = Math.max(y2, paper.lastIndexOf('#'));
+          }
+        });
+        return [x1, y1, x2 + 1, y2 + 1];
       }
-    }
-  }
-
-  X.sort((a, b) => a - b);
-  Y.sort((a, b) => a - b);
- return [Y[0], X[0], Y[Y.length - 1] + 1, X[X.length - 1] + 1];
-}
