@@ -1,19 +1,6 @@
-const solution = (s, skip, index) => {
-    const last = 'z'.charCodeAt();
-    skip = skip.split('').map((v) => v.charCodeAt());
-    
-    return s.split('')
-        .map((v) => v.charCodeAt())
-        .map((v) => {
-          let newIndex = index;
-          for (let a = 0; a < newIndex; a++) {
-            if (v === last) {
-              v -= 26;
-            }
-            v++;
-            skip.includes(v) && newIndex++;
-          }
-          return String.fromCharCode(v);
-        })
-        .join('');
-  };
+function solution(s, skip, index) {
+    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", 
+                      "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", 
+                      "u", "v", "w", "x", "y", "z"].filter(v => !skip.includes(v));
+    return s.split("").map(v => alphabet[(alphabet.indexOf(v) + index) % alphabet.length]).join("");
+}
