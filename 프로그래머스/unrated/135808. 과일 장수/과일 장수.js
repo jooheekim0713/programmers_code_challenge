@@ -1,12 +1,10 @@
 function solution(k, m, score) {
     let answer = 0;
-    let idx = m - 1;
+    const sortedScore = score.slice().sort((a, b) => a - b)
+    							.slice(score.length % m);
     
-    score.sort((a, b) => b - a);
-  
-    for (let i = 0; i < Math.floor(score.length / m); i++) {
-    	answer += score[idx] * m;
-    	idx += m;
-  }
-  return answer;
+    for (let i = 0; i < sortedScore.length; i += m) {
+        answer += sortedScore[i] * m;
+    }
+    return answer;
 }
