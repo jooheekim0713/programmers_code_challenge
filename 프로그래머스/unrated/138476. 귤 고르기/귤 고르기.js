@@ -1,19 +1,12 @@
 function solution(k, tangerine) {
-    let answer = 0;
-    let obj = {};  
-
-    tangerine.sort((a, b) => a - b);
-    tangerine.forEach((size, i) => { 
-       obj[size] = obj[size] + 1 || 1;
-    });
-
-    let objVal = Object.values(obj).sort((a, b) => b - a);
-    let sum = 0;
-    for(let i = 0; i < objVal.length; i++){ 
-        answer++;
-        sum += objVal[i];
-        if(sum >= k){ break; }
-    }
-
-    return answer;
+  let answer = 0;
+  const tDict = {};
+  tangerine.forEach((t) => tDict[t] = (tDict[t] || 0) + 1);
+  const tArr = Object.values(tDict).sort((a, b) => b - a);
+  for (const t of tArr) {
+    answer++;
+    if (k > t) k -= t;
+    else break;
+  }
+  return answer;
 }
