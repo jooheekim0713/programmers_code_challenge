@@ -1,5 +1,4 @@
 function solution(brown, yellow) {
-    var answer = [];
     let sum = brown + yellow;
     
     for(let column = 3; column <= brown; column++){
@@ -10,5 +9,4 @@ function solution(brown, yellow) {
             }
         }
     }
-    return answer;
 }
