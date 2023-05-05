@@ -1,6 +1,6 @@
-const solution = nums => {
-    let answer = [...new Set(nums)],
-        limit = nums.length / 2;
+function solution(nums) {
+  const max = nums.length / 2;
+  const arr = [...new Set(nums)];
 
-    return answer.length > limit ? limit : answer.length;
+  return arr.length > max ? max : arr.length
 }
