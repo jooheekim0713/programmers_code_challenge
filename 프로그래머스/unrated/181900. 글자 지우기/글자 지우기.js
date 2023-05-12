@@ -1,3 +1,11 @@
 function solution(my_string, indices) {
-    return [...my_string].map((a, i) => indices.includes(i) ? 0 : a).filter(a => a !== 0).join("")
+    var answer = '';
+
+    for(let i = 0; i<my_string.length; i++){
+        if(!indices.includes(i)){
+            answer += my_string[i]
+        }
+    }
+
+    return answer;
 }
