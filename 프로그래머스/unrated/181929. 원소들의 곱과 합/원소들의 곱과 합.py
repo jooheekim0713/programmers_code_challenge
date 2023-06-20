@@ -1,10 +1,8 @@
 def solution(num_list):
-    sum1 = sum(num_list)
-    mul = 1
+    a=1
+    b=0
     for x in num_list:
-        mul *= x
-    if(sum1 **2 > mul):
-        answer = 1
-    else:
-        answer = 0
-    return answer
+        a*=x
+        b+=x
+    if a<b*b: return 1
+    return 0
