@@ -1,6 +1,6 @@
 def solution(my_string, indices):
-    arr = list(my_string)
-    indices.sort(reverse=True)
-    for i in indices:
-        arr.pop(i)
-    return ''.join(arr)
+    answer = ''
+    for i in range(len(my_string)):
+        if i not in indices:
+            answer += my_string[i]
+    return answer
