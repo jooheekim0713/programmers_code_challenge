@@ -1,12 +1,9 @@
 def solution(arr, queries):
-    result = []
-    for query in queries:
-        temp_list = []
-        for i in range(query[0], query[1] + 1):
-            if arr[i] > query[2]:
-                temp_list.append(arr[i])
-        try:   
-            result.append(min(temp_list))
-        except:
-            result.append(-1)
-    return result
+    answer = []
+    for s, e, k in queries:
+        tmp = []
+        for x in arr[s:e+1]:
+            if x > k:
+                tmp.append(x)
+        answer.append(-1 if not tmp else min(tmp))
+    return answer
