@@ -1,3 +1,2 @@
-def solution(x):
-    total = sum(list(map(int,str(x))))
-    return False if x % total != 0 else True
+def solution(n):
+    return n % sum(int(x) for x in str(n)) == 0
