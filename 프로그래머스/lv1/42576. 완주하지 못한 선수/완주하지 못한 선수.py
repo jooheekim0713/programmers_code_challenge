@@ -2,7 +2,7 @@ def solution(participant, completion):
     completion.sort()
     participant.sort()
     
-    for i in range(len(completion)):
+    for i,val in enumerate(completion):
         if participant[i] != completion[i]:
             return participant[i]
     
