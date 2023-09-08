@@ -1,13 +1,10 @@
 def solution(lottos, win_nums):
-    cnt_corr = 0
-    cnt_zero = 0
-    for idx,val in enumerate(lottos):
-        if lottos[idx] in win_nums:
-            cnt_corr += 1
-        if lottos[idx] == 0:
-            cnt_zero += 1
-            
-    total = cnt_corr + cnt_zero
-    rank = {6:1,5:2,4:3,3:4,2:5,1:6,0:6}
-    answer = [rank[total],rank[cnt_corr]]
-    return answer
+
+    rank=[6,6,5,4,3,2,1]
+
+    cnt_0 = lottos.count(0)
+    ans = 0
+    for x in win_nums:
+        if x in lottos:
+            ans += 1
+    return rank[cnt_0 + ans],rank[ans]
