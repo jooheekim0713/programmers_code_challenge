@@ -1,5 +1,22 @@
 def solution(n, words):
-    for p in range(1, len(words)):
-        if words[p][0] != words[p-1][-1] or words[p] in words[:p]: return [(p%n)+1, (p//n)+1]
-    else:
-        return [0,0]
+    answer = []
+    turn = 0
+    wordList = [words[0]]
+    
+    for idx in range(1, len(words)):
+        if words[idx-1][-1] != words[idx][0]:
+            turn = idx
+            break
+            
+        if words[idx] in wordList:
+            turn = idx
+            break
+            
+        wordList.append(words[idx])
+        
+    answer = [turn%n +1, turn//n + 1]
+    
+    if turn == 0:
+        answer = [0, 0]
+        
+    return answer
