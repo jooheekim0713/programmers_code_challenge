@@ -1,16 +1,12 @@
-from string import ascii_lowercase
-
 def solution(s, skip, index):
-    result = ''
+    atoz = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-    a_to_z = set(ascii_lowercase)
-    a_to_z -= set(skip)
-    a_to_z = sorted(a_to_z)
-    l = len(a_to_z)
+    for i in skip:
+        atoz.remove(i)
 
-    dic_alpha = {alpha:idx for idx, alpha in enumerate(a_to_z)}
-
+    ans = ''
     for i in s:
-        result += a_to_z[(dic_alpha[i] + index) % l]
+        ans += atoz[(atoz.index(i)+index)%len(atoz)]
 
-    return result
+    return ans
