@@ -1,17 +1,21 @@
--- 코드를 입력하세요
-
-SELECT HISTORY_ID, 
-       ROUND(DAILY_FEE*(DATEDIFF(END_DATE, START_DATE)+1)
-       *(100-IF(DISCOUNT_RATE IS NULL, 0, DISCOUNT_RATE))/100) AS FEE
-FROM CAR_RENTAL_COMPANY_CAR AS A 
-JOIN CAR_RENTAL_COMPANY_RENTAL_HISTORY AS B 
-ON A.CAR_ID = B.CAR_ID
-LEFT OUTER JOIN CAR_RENTAL_COMPANY_DISCOUNT_PLAN AS C
-ON A.CAR_TYPE = C.CAR_TYPE
-AND C.DURATION_TYPE = (CASE WHEN DATEDIFF(END_DATE,START_DATE)+1>='90' THEN '90일 이상'
-                            WHEN DATEDIFF(END_DATE,START_DATE)+1>='30' THEN '30일 이상'
-                            WHEN DATEDIFF(END_DATE,START_DATE)+1>='7' THEN '7일 이상'
-                          ELSE NULL END)
-WHERE 1=1                          
-AND A.CAR_TYPE = '트럭'
-ORDER BY FEE DESC, B.HISTORY_ID DESC;
+with temp as
+(
+SELECT *, datediff(end_date, start_date)+1 rental_duration
+from car_rental_company_rental_history H
+    left join car_rental_company_car C using (car_id)
+    left join car_rental_company_discount_plan P using (car_type)
+where car_type = '트럭'
+)
+select history_id,
+    case
+        when rental_duration between 7 and 27 
+            then round(daily_fee*rental_duration*0.95)
+        when rental_duration between 30 and 89
+            then round(daily_fee*rental_duration*0.92)
+        when rental_duration >= 90
+            then round(daily_fee*rental_duration*0.85)
+        else daily_fee*rental_duration
+    end as fee
+from temp
+group by 1
+order by 2 desc, 1 desc
