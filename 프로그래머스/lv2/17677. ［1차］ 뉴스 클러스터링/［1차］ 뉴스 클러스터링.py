@@ -1,26 +1,17 @@
-from collections import Counter
+import re
+import math
 
 def solution(str1, str2):
-    str1_low = str1.lower()
-    str2_low = str2.lower()
-    
-    str1_lst = []
-    str2_lst = []
-    
-    for i in range(len(str1_low)-1):
-        if str1_low[i].isalpha() and str1_low[i+1].isalpha():
-            str1_lst.append(str1_low[i] + str1_low[i+1])
-    for j in range(len(str2_low)-1):
-        if str2_low[j].isalpha() and str2_low[j+1].isalpha():
-            str2_lst.append(str2_low[j] + str2_low[j+1])
-            
-    Counter1 = Counter(str1_lst)
-    Counter2 = Counter(str2_lst)
-    
-    inter = list((Counter1 & Counter2).elements())
-    union = list((Counter1 | Counter2).elements())
-    
-    if len(union) == 0 and len(inter) == 0:
+    str1 = [str1[i:i+2].lower() for i in range(0, len(str1)-1) if not re.findall('[^a-zA-Z]+', str1[i:i+2])]
+    str2 = [str2[i:i+2].lower() for i in range(0, len(str2)-1) if not re.findall('[^a-zA-Z]+', str2[i:i+2])]
+
+    int_ = set(str1) & set(str2)
+    uni = set(str1) | set(str2)
+
+    if len(uni) == 0 :
         return 65536
-    else:
-        return int(len(inter) / len(union) * 65536)
+
+    inter = sum([min(str1.count(i), str2.count(i)) for i in int_])
+    union = sum([max(str1.count(u), str2.count(u)) for u in uni])
+
+    return math.floor((inter/union)*65536)
