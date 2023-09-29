@@ -1,7 +1,5 @@
--- 코드를 입력하세요
-SELECT user_id, nickname, 
-    CONCAT(city, ' ', street_address1, ' ', street_address2) '전체주소',
-    CONCAT(left(tlno, 3), '-', substring(tlno, 4, 4), '-', substring(tlno,8)) '전화번호'
+SELECT user_id, nickname, city ||' '|| street_address1 || ' ' || street_address2,
+substr(tlno,0,3)||'-'||substr(tlno,4,4)||'-'||substr(tlno,8)
 FROM USED_GOODS_USER
 WHERE user_id IN (SELECT writer_id
         FROM used_goods_board
