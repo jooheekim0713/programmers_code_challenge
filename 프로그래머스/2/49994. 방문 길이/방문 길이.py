@@ -1,15 +1,11 @@
 def solution(dirs):
-    sets = set()
-    y, x = 0, 0
-    udrl = {'U': (1, 0), 'D': (-1, 0), 'R': (0, 1), 'L': (0, -1)}
-    
-    for d in dirs:
-        dy, dx = udrl[d]
-        ny = y + dy
-        nx = x + dx
-        if -5 <= ny <= 5 and -5 <= nx <= 5:
-            sets.add(((y, x), (ny, nx)))
-            sets.add(((ny, nx), (y, x)))
-            y = ny
-            x = nx
-    return len(sets) // 2
+    s = set()
+    d = {'U': (0,1), 'D': (0, -1), 'R': (1, 0), 'L': (-1, 0)}
+    x, y = 0, 0
+    for i in dirs:
+        nx, ny = x + d[i][0], y + d[i][1]
+        if -5 <= nx <= 5 and -5 <= ny <= 5:
+            s.add((x,y,nx,ny))
+            s.add((nx,ny,x,y))
+            x, y = nx, ny
+    return len(s)//2
