@@ -1,13 +1,10 @@
 def solution(ingredient):
-    answer = 0
-    
-    stack=[]
+    s = []
+    cnt = 0
     for i in ingredient:
-        stack.append(i)
-        if stack[-4:]==[1,2,3,1]:
-            answer+=1
-            for k in range(4):
-                stack.pop()
-            
-    return answer   
-    return answer
+        s.append(i)
+        if s[-4:] == [1, 2, 3, 1]:
+            cnt += 1
+            for i in range(4):
+                s.pop()
+    return cnt
