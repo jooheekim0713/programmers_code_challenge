@@ -1,8 +1,12 @@
+
 def solution(triangle):
-    answer = 0
-    triangle = [[0] +t + [0] for t in triangle]
-    for i in range(1,len(triangle)):
-        for j in range(1,i+2):
-            triangle[i][j] += max(triangle[i-1][j-1],triangle[i-1][j])
-    answer = max(triangle[-1])
+
+    height = len(triangle)
+
+    while height > 1:
+        for i in range(height - 1):
+            triangle[height-2][i] += max([triangle[height-1][i], triangle[height-1][i+1]])
+        height -= 1
+
+    answer = triangle[0][0]
     return answer
