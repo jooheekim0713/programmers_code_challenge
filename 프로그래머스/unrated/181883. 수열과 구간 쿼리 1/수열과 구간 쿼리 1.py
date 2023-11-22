@@ -1,4 +1,4 @@
 def solution(arr, queries):
-    for (s, e) in queries:
-        arr = [a+1 if s <= i <= e else a for i, a in enumerate(arr)]
+    for l,r in queries:
+        for i in range(l,r+1): arr[i]+=1
     return arr
