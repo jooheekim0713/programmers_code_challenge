@@ -5,7 +5,7 @@ def solution(id_list, report, k):
     for r in set(report):
         a,b = r.split()
         reported[b] += 1
-
+    print(reported)
     for r in set(report):
         a,b = r.split()
         if reported[b] >= k:
