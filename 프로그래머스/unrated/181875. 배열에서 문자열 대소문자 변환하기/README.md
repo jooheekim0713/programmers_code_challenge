@@ -1,10 +1,10 @@
-# [unrated] 배열에서 문자열 대소문자 변환하기 - 181875 
+# [level unrated] 배열에서 문자열 대소문자 변환하기 - 181875 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181875) 
 
 ### 성능 요약
 
-메모리: 33.5 MB, 시간: 0.05 ms
+메모리: 10.2 MB, 시간: 0.01 ms
 
 ### 구분
 
@@ -12,7 +12,11 @@
 
 ### 채점결과
 
-Empty
+정확성: 100.0<br/>합계: 100.0 / 100.0
+
+### 제출 일자
+
+2024년 1월 0일 10:53:9
 
 ### 문제 설명
 
@@ -27,7 +31,7 @@ Empty
 
 <ul>
 <li>1 ≤ <code>strArr</code>의 원소의 길이 ≤ 20</li>
-<li><code>strArr</code>의 모든 원소는 알파벳 소문자로 이루어져 있습니다.</li>
+<li><code>strArr</code>의 원소는 알파벳으로 이루어진 문자열 입니다.</li>
 </ul></li>
 </ul>
 
@@ -68,5 +72,7 @@ Empty
 <li>따라서 ["abc","ABC"]를 return 합니다.</li>
 </ul>
 
+<p>※ 2023년 05월 15일 제한사항이 수정되었습니다.</p>
 
-> 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges
+
+> 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
