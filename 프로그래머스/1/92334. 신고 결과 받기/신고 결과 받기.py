@@ -1,14 +1,17 @@
 def solution(id_list, report, k):
-    answer = [0] * len(id_list)
-    reported = {x: 0 for x in id_list}
-
-    for r in set(report):
-        a,b = r.split()
-        reported[b] += 1
-    print(reported)
-    for r in set(report):
-        a,b = r.split()
-        if reported[b] >= k:
-            answer[id_list.index(a)] += 1
-
+    answer = []
+    #하나하나씩 고고
+    idObj ={id:0 for id in id_list}
+    report = set(report)
+    for i in report:
+        idObj[i.split(' ')[1]] += 1
+    
+    #value가 k이상인 key를 찾자
+    keyObj = [key for (key,value) in idObj.items() if value>=k]
+    
+    answerObj ={id:0 for id in id_list}
+    for i in report:
+        if i.split(' ')[1] in keyObj:
+            answerObj[i.split(' ')[0]] += 1
+    answer = [ value for (key,value) in answerObj.items()]
     return answer
